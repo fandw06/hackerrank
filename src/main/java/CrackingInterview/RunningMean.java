@@ -122,7 +122,5 @@ public class RunningMean {
         System.out.println(mean);
         mean = rm.runningMean(7);
         System.out.println(mean);
-
-
     }
 }

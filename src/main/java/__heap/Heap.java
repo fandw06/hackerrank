@@ -2,7 +2,6 @@ package __heap;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-
 /**
  * Min heap
  */

@@ -1,4 +1,4 @@
-package icecream;
+package CrackingInterview.icecream;
 
 import java.util.*;
 
@@ -27,7 +27,6 @@ public class Icecream {
         for (int i = 0; i< a.length-1; i++) {
             int j = Collections.binarySearch(list.subList(i+1, list.size()), new Pair(-1, m-list.get(i).price), (p1, p2) -> p1.price - p2.price);
             if (j >= 0 ) {
-
                 return new int[]{Math.min(list.get(i).index, list.get(j+i+1).index), Math.max(list.get(i).index, list.get(j+i+1).index)};
             }
         }

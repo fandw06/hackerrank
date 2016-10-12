@@ -1,18 +1,24 @@
 package CrackingInterview;
 
-import java.util.Comparator;
+import java.util.*;
 
 /**
- * Created by Dawei on 10/7/2016.
+ * 两种方式，一种是直接继承Comparable，实现compareTo方法，
+ * 一种是新建一个类实现Comparator。
  */
 public class PlayerRank {
-    public class Player {
+    public class Player implements Comparable<Player>{
         String name;
         int score;
 
         Player(String name, int score) {
             this.name = name;
             this.score = score;
+        }
+
+        @Override
+        public int compareTo(Player o) {
+            return 0;
         }
     }
 
@@ -26,5 +32,6 @@ public class PlayerRank {
             return o1.name.compareTo(o2.name);
         }
     }
+
 
 }
