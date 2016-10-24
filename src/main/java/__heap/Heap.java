@@ -8,9 +8,9 @@ import java.util.Comparator;
 public class Heap {
 
     ArrayList<Integer> array;
-    Comparator<Integer> comparator;
+    Comparator<Long> comparator;
 
-    public Heap(Comparator<Integer> comparator) {
+    public Heap(Comparator<Long> comparator) {
         array = new ArrayList<>();
         this.comparator = comparator;
     }
@@ -21,14 +21,14 @@ public class Heap {
     }
 
     private void filter(int pos) {
-        if (pos > 0 && comparator.compare(array.get(pos), array.get((pos-1)/2)) < 0)
+        if (pos > 0 && comparator.compare((long)array.get(pos), (long)array.get((pos-1)/2)) < 0)
             filterUp(pos);
         else
             filterDown(pos);
     }
 
     private void filterUp(int son) {
-        while (son > 0 && comparator.compare(array.get(son), array.get((son-1)/2)) <0) {
+        while (son > 0 && comparator.compare((long)array.get(son), (long)array.get((son-1)/2)) <0) {
             swap(son, (son-1)/2);
             son = (son-1)/2;
         }
@@ -38,9 +38,9 @@ public class Heap {
         int child;
         while (2*parent +1 < array.size()) {
             child = 2 * parent +1;
-            if (child + 1 < array.size() && comparator.compare(array.get(child), array.get(child + 1)) > 0)
+            if (child + 1 < array.size() && comparator.compare((long)array.get(child), (long)array.get(child + 1)) > 0)
                 child++;
-            if (comparator.compare(array.get(child), array.get(parent)) < 0) {
+            if (comparator.compare((long)array.get(child), (long)array.get(parent)) < 0) {
                 swap(child, parent);
                 parent = child;
             }
@@ -72,6 +72,18 @@ public class Heap {
         array.set(index, array.get(array.size() -1));
         array.remove(array.size() -1);
         filter(index);
+    }
+
+    public void removeValue(int v) {
+        int index = -1;
+        for (int i = 0; i< array.size(); i++) {
+            if (array.get(i) == v) {
+                index = i;
+                break;
+            }
+        }
+        if (index >= 0 )
+            remove(index);
     }
 
     public int size() {

@@ -1,5 +1,8 @@
 package CrackingInterview;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.Stack;
 
 /**
@@ -43,6 +46,28 @@ public class TwoStack {
                 }
             }
             return result;
+        }
+    }
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new File("twostack2.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        int q = scanner.nextInt();
+        MyQueue<Integer> queue = new MyQueue();
+        for (int i = 0; i<q; i++) {
+            int cmd = scanner.nextInt();
+            if (cmd == 1) {
+                queue.enqueue(scanner.nextInt());
+            }
+            else if (cmd == 2) {
+                queue.dequeue();
+            }
+            else if (cmd == 3)
+                System.out.println(queue.peek());
         }
     }
 }
